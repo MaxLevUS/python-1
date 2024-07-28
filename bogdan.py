@@ -1,3 +1,99 @@
+# # print("Maksim Hello")
+# # my_list = [1, 2, 3]
+
+
+# # print(my_list)
+
+
+# """long_str = "This is a
+# very
+# long string"
+
+# print("1) " + long_str)
+
+# print("2) ", type(long_str))
+
+# print("3) ", len(long_str))
+
+# print("4) ", long_str[0])
+
+# print("5) " + long_str[0:6])
+
+# print("6) " + long_str[3:])"""
+
+
+# # Methods
+
+# """my_new_string = "Hello, My name is Maksim"
+
+# print(my_new_string)
+
+# print(my_new_string.replace("Maksim", "Anastasiya"))
+
+# print(my_new_string.count(" "))
+
+# print(my_new_string.count("is"))"""
+
+
+# # Целые числа
+
+
+# """friend_qty = 50
+
+# print(friend_qty)
+
+# print(type(friend_qty))
+
+
+# any_num = input("Enter any number: ")
+
+# print(any_num)
+
+# print(type(any_num))  # type will be - str
+
+
+# int_num = int(input("Insert any number: "))
+
+# print(int_num)
+
+# print(type(int_num))  # type will be - number"""
+
+
+# # Возведение в степень
+
+# base = 5
+# power = 3
+
+# print(pow(base, power))
+
+
+# # Длинные числа - разрешены нижние подчеркивания, для удобства чтения, но при выводе они не учитываются
+
+# """one_million = 1_000_000
+
+# print(one_million)  # 1000000
+
+# my_number = 3_427
+
+# print(my_number)  # 3427"""
+
+# # Задача
+
+# """input_str = input("Insert any number  ")
+# input_int = int(input_str)
+
+# print(input_int)
+
+# print(type(input_int))"""
+
+
+# first_num = 5
+# second_num = 10
+
+# print(pow(first_num, second_num))
+# print(type(pow(first_num, second_num)))
+
+
 # Самое важное в Пайтон это Объекты,
 # потому что Пайтон это объектно-ориентированный язык программирования
 # Почему не совсем видно, что Пайтон это ООП, потому что
@@ -268,6 +364,7 @@ print(sum_nums(44, 88)) #132
 
 # a > b  # expression
 
+import app.py
 from sys import getsizeof
 import random
 from datetime import date
@@ -5532,3 +5629,30 @@ second_comment = Comment("Second comment")
 second_comment.upvote()
 
 # Остановился здесь Раздел 41: Магические методы.
+
+
+# Декораторы.
+def is_user_authenicated():
+    return False
+
+
+def check_user_auth(fn):
+    def wrapper(*args, **kwargs):
+        if is_user_authenicated():
+            print("User is authenticated!")
+            return fn(*args, **kwargs)
+        else:
+            raise Exception("User is NOT authenticated...")
+
+    return wrapper
+
+
+@check_user_auth
+def do_sensitive_job():
+    # Do some tasks only if user is authenticated
+    print("Results of some sensitive tasks.")
+
+try:
+    do_sensitive_job()
+except Exception as e:
+    print(e)
