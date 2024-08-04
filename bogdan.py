@@ -363,14 +363,14 @@ print(sum_nums(44, 88)) #132
 """
 
 # a > b  # expression
-
-import app.py
-from sys import getsizeof
-import random
-from datetime import date
-from copy import deepcopy
-"Hello" + "World"  # expression
-
+# """
+# import app.py
+# from sys import getsizeof
+# import random
+# from datetime import date
+# from copy import deepcopy
+# "Hello" + "World"  # expression
+# """
 # my_func(10, 5) #expression,
 # т.е. результат вызова функции можно использовать в вызовах др. функций
 # Потому что вызов функций это выражение.
@@ -3123,6 +3123,12 @@ process_data({'name': 'Maksim'}, send_data)
 # ДОКУМЕНТИРОВАНИЯ ФУКНКЦИЙ, КЛАССОВ, МОДУЛЕЙ.
 
 
+
+
+from pathlib import Path
+from os import path
+import json
+import _json
 def mult_by_factor(value, mult=2):
     """Multiplies number by mltiplicator"""  # -DOCSTRING
     return value * mult
@@ -5610,7 +5616,7 @@ print(first_comment.total_comments)  # 10
 # Магические мтеоды в классах.
 
 
-class Comment:
+"""class Comment:
     def __init__(self, text):
         self.text = text
         self.votes_qty = 0
@@ -5655,4 +5661,264 @@ def do_sensitive_job():
 try:
     do_sensitive_job()
 except Exception as e:
-    print(e)
+    print(e)"""
+
+
+# JSON -Javascript Object Notation - Формат обмена данными и формат файлов - это формат обмена
+# данными между компьютерами, также это формат хранения данных,
+# так как очень легко хранить данные в формате джейсон - ключ - значение
+#
+# Допустимые типы значений в JSON
+# string, number, JSON object, boolean, array, null
+#
+# Передача данных в формате джейсон происходит в виде строки
+# {"id":235, "brand": "Nike", "status":{"isForSale":true}}.
+
+# import json
+
+
+"""json_str = '{"id": 235, "brand": "Nike", "status": {"isForSale":true}}'
+
+sneakers = json.loads(json_str)  # loads is atribute of json
+
+print(type(sneakers))
+
+print(sneakers['brand'])  # Nike
+# True - converted from JS format to Python - from true to True.
+print(sneakers['status']['isForSale'])
+
+# Formating from dict to json using method json.dumps below.
+
+my_dict = {
+    'id': 235,
+    'brand': 'Nike',
+    'qty': 84,
+    'status': {
+        'isForSale': True
+    }
+}
+
+my_dict_to_json = json.dumps(my_dict)
+print(my_dict_to_json)
+# {"id": 235, "brand": "Nike", "qty": 84, "status": {"isForSale": true}}
+
+# Форматирование результирующего JSON
+print('')
+json_str = '{"id": 235, "brand": "Nike", "status": {"isForSale":true}}'
+
+sneakers = json.loads(json_str)
+json.dumps(sneakers, indent=1)  # добавляет один отступ между эл.
+print(sneakers)"""
+
+# Конвертация типов Python to type JSON.
+
+# Python - json
+# str - String
+# int - Number
+# float - Number
+# True - true
+# False - false
+# None - null
+# dict - Object
+# list - Array
+# tuple - Array
+
+
+# import json
+
+"""json_array = [{"a": 1}, {"b": 2}]
+
+my_list = json_array.loads(json_array)
+
+print(my_list)"""
+
+
+# Задача
+
+# 1. Создайте любой словарь, используя ключи с значениями разных типов.
+
+# 2. Конвертируйте словарь в JSON.
+
+# 3. Результирующий JSON выведите в терминал.
+
+# 4. Выведите в терминал тип результирующего значения.
+
+
+"""my_dict = {
+    'name': 'Maksim',
+    'age': 43,
+    'maried_status': True,
+    'family': {
+        'wife': ['Anastasiya', 35],
+        'daughers': {
+            'Yelizaveta': 12,
+            'Yekaterina': 11,
+        }
+    },
+}
+
+# Convert dictionary to JSON string
+my_dict_to_json = json.dumps(my_dict, indent=4)
+print(my_dict_to_json)
+
+# Print the type of JSON string
+print(type(my_dict_to_json))
+
+# Convert JSON string back to dictionary
+back_to_dict = json.loads(my_dict_to_json)
+print(back_to_dict)
+
+# Print the type of the dictionary
+print(type(back_to_dict))
+"""
+# Result:
+# {
+# "name": "Maksim",
+# "age": 43,
+# "maried_status": true,
+# "family": {
+#     "wife": [
+#         "Anastasiya",
+#         35
+#     ],
+#     "daughers": {
+#         "Yelizaveta": 12,
+#         "Yekaterina": 11
+#     }
+# }
+# }
+#     < class 'str' >
+#     {'name': 'Maksim', 'age': 43, 'maried_status': True, 'family': {
+#         'wife': ['Anastasiya', 35], 'daughers': {'Yelizaveta': 12, 'Yekaterina': 11}}}
+#     < class 'dict' > .
+
+
+# Встроенные модули для рнаботы с файлами. OS(является пакетом,
+# который содержит различные модули, в том числе path) and PATHLIB(объектно-ориетнированный подход к работе с файлами)
+# Примеры показанные ниже.
+
+
+# from os import path
+
+# print(path.abspath('.'))
+# # c:\Users\Windows 11\Desktop\python
+
+# print(type(path))
+# # <class 'module'>
+
+# # Выше указан функциональный подход, а ниже объектно-ориентированный подход.
+
+
+# print(Path('.').absolute())
+# # c:\Users\Windows 11\Desktop\python
+
+# print(type(Path)) 
+# # <class 'type'>
+
+
+
+# =======================================================
+
+# Ниже показан способ формирования Списка с методами не включая в него магические методы. 
+"""
+from pathlib import Path
+
+file_path = Path('test.txt')
+
+print([m for m in dir(file_path) if not m.startswith('_')])
+"""
+
+# Путь к текущей директории(cwd - current working directory)-
+
+# from pathlib import Path
+
+# print(Path.cwd())  # c:\Users\Windows 11\Desktop\python
+
+
+# Формирование путей на mac and unix
+
+# from pathlib import Path
+
+# print(Path('usr').joinpath('local').joinpath('bin'))  # usr\local\bin
+
+# print(Path('usr') / 'local'/'bin')  # usr\local\bin
+
+# #for Windows
+
+# print(Path('C:/').joinpath('Users').joinpath('maksim'))  # C:\Users\maksim
+
+# print(Path('C:/') / 'Users' / 'maksim')  # C:\Users\maksim
+
+# #Проверка присутствия директории или файла
+
+# from pathlib import Path
+
+# print(Path('app.py').exists())
+# #True
+
+# print(Path('/Users/Windows 11/Desktop/python/python/bogdan.py').exists())
+# #True
+
+# print(Path('other.py').exists())
+# #False
+
+#Директория ли файл
+
+# from pathlib import Path
+
+# print(Path('app.py').is_file())
+# #True
+
+# print(Path('../python').is_file())
+# #False
+
+# print(Path('../python').is_dir())
+# #True
+
+# from pathlib import Path
+
+# for f in Path('.').iterdir():
+#     print(f)  
+# .git
+# app.py
+# python
+
+
+# Создание и удаление папок в директории
+
+"""from pathlib import Path
+
+# /Users/Windows 11/Desktop/python/python/bogdan.py
+
+my_dir = Path('/Users')/ 'Windows 11'/'Desktop'/'python'/'python'/'my_new_folder'
+
+if not my_dir.exists():
+    my_dir.mkdir() 
+#создалась новая папка в текущей директории.
+
+if my_dir.exists():
+    my_dir.rmdir()#Удалили эту директорию."""
+
+# Отправка имейлов
+
+from email.message import EmailMessage
+import smtplib
+from string import Template
+from pathlib import Path
+
+my_email = EmailMessage()
+
+html_template = Template(Path("templates/index.html").read_text())
+html_content = html_template.substitute({'name': 'Maksim', 'date': 'tomorrow'})
+
+my_email['form'] = 'Maksim'
+my_email['to'] = 'test@gmail.com'
+my_email['subject'] = 'Hello from Python'
+my_email.set_content(html_content, 'html')
+
+with smtplib.SMTP(host='localhost', port=2525) as smtp_server:
+    smtp_server.ehlo()
+    smtp_server.starttls()
+    smtp_server.login('username', 'password')
+    smtp_server.send_message(my_email)
+    print('Email was sent!')
